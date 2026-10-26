@@ -1,44 +1,52 @@
 import expenseModel from "../models/expenseModel.js";
 
 const expenseController = {
-
   async create(req, res) {
-  try {
-    const { title,amount,category,paymentMethod,date,description,} = req.body;
+    try {
+      const { title, amount, category, paymentMethod, date, description } =
+        req.body;
 
-    const newRecord = new expenseModel({
-      title,
-      amount,
-      category,
-      paymentMethod,
-      date,
-      description,
-      userId: req.user.id,
-    });
+      const newRecord = new expenseModel({
+        title,
+        amount,
+        category,
+        paymentMethod,
+        date,
+        description,
+        userId: req.user.id,
+      });
 
-    await newRecord.save();
+      await newRecord.save();
 
-
-    res.status(201).send({
-      success: true,
-      message: "Expense created successfully",
-      record: newRecord,
-    });
-  } catch (error) {
-    res.status(400).send({
-      success: false,
-      message: "Error creating expense",
-      error: error.message,
-    });
-  }
-}
-,
-
+      res.status(201).send({
+        success: true,
+        message: "Expense created successfully",
+        record: newRecord,
+      });
+    } catch (error) {
+      res.status(400).send({
+        success: false,
+        message: "Error creating expense",
+        error: error.message,
+      });
+    }
+  },
   async getAll(req, res) {
     try {
+  //     const total = await expenseModel.countDocuments();
+  //     console.log(total);
+  //     const limit = 2;
+  //     const totalPages = Math.ceil(total / limit);
+      
+  // const query = req.query
+  // const current = query?.current_page ||1;
+  // const offset = (current-1)*limit
+
       const Data = await expenseModel.find({
         userId: req.user.id,
-      });    
+     } )
+      // .skip(offset)
+      // .limit(limit)
 
       res.status(200).send({
         success: true,

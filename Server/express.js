@@ -6,6 +6,7 @@ import cors from "cors";
 import expenseController from "./controllers/expenseController.js";
 import userConroller from "./controllers/userController.js";
 import verifyToken from "./middleware/authMiddleware.js";
+import userModel from "./models/userModel.js";
 
 const app = express();
 
@@ -22,12 +23,13 @@ mongoose
     console.log("MongoDB connection error:", error.message);
   });
 
+ 
 // Public routes
 app.post("/register", userConroller.register);
 app.post("/login", userConroller.login);
 
 // Protected expense routes
-app.get("/", verifyToken, expenseController.getAll);
+app.get("/",verifyToken, expenseController.getAll)
 
 app.get("/:id", verifyToken, expenseController.getOne);
 

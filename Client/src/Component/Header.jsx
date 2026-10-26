@@ -6,10 +6,7 @@ const Header = () => {
 <>
 <nav>
   <div className="brandname">Expense Manager</div>
-  <ul>
-    <li>Home</li>
-    <li>About</li>
-  </ul>
+ 
 </nav>
 </>
   )

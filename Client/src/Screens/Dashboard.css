@@ -5,6 +5,7 @@
 
 body {
   margin: 0;
+  
   font-family: Arial, sans-serif;
   background: #f4f6fb;
   color: #1e293b;
@@ -31,7 +32,7 @@ button {
 
 .sidebar {
   width: 230px;
-  background: #802e91;
+  background: #3d4047;
   color: white;
   padding: 25px 15px;
   flex-shrink: 0;
